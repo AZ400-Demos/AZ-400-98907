@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -25,5 +27,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+var des = new DESCryptoServiceProvider(); // 🔥 Weak algorithm
+des.GenerateKey();
+des.GenerateIV();
 
 app.Run();
